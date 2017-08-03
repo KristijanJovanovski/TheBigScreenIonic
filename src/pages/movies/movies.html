@@ -1,25 +1,48 @@
 <ion-header>
+  <expandable-header [scrollArea]="myContent">
+  </expandable-header>
   <ion-navbar>
-    <ion-title text-center >Movies</ion-title>
+      <ion-segment id='segments' color="primary">
+      <ion-segment-button value="Popular" >
+        Popular
+      </ion-segment-button>
+      <ion-segment-button value="InTheaters">
+        In Theaters
+      </ion-segment-button>
+        <ion-segment-button value="Trending" >
+        Trending
+      </ion-segment-button>
+      <ion-segment-button value="Watchlist">
+        Watchlist
+      </ion-segment-button> 
+    </ion-segment>
   </ion-navbar>
 </ion-header>
 
 
-
-<ion-content padding>
-  <ion-segment id='segments' color="primary">
-      <ion-segment-button value="Recommended" >
-        Recommended
-      </ion-segment-button>
-      <ion-segment-button value="In Theaters">
-        In Theaters
-      </ion-segment-button>
-       <ion-segment-button value="Popular" >
-        Popular
-      </ion-segment-button>
-      <ion-segment-button value="Watchlist">
-        Watchlist
-      </ion-segment-button>
-    </ion-segment>
- 
+<ion-content fullscreen #myContent>
+  <!-- <div id="list" no-padding>
+    <div id="list-item" *ngFor="let movie of popularMovies"> 
+       <ion-img id="list-item-img"class="grid-img" [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"> </ion-img>
+    </div>
+  </div> -->
+  <ion-grid fixed no-padding>
+    <ion-row align-items-stretch	>
+      <ion-col (click)="getMovieDetails(movie.id)" col-6 col-md-4 col-lg-3 col-xl-2 align-self-stretch align-self-center *ngFor="let movie of popularMovies">
+        <ion-img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"> </ion-img>
+        <ion-row id="description">
+          <ion-col col-6 align-self-center>
+            <ion-icon name="flame"></ion-icon> <span>{{movie.vote_average}}</span>
+          </ion-col>
+          <ion-col col-6 align-self-center>
+            <ion-row justify-content-around>
+              <ion-icon name="eye"></ion-icon>
+              <ion-icon name="heart"></ion-icon>
+              <ion-icon name="play"></ion-icon>  
+            </ion-row>
+            </ion-col>       
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

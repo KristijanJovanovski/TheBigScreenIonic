@@ -1,0 +1,15 @@
+expandable-header {
+    display: flex;
+    background-color: map-get($colors, primary );
+    overflow: hidden;
+    justify-content: center;
+
+
+    ion-toolbar.toolbar-md{
+        margin-top: 0;
+        padding: 0;
+        min-height: 0;
+        z-index: 2;
+        background-color: map-get($colors,primary );
+    }
+}

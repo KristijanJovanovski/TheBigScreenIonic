@@ -16,4 +16,69 @@ page-movies {
 
         }
     }
+   
+
+    ion-img{
+        contain: content;
+    }
+    #description{
+        z-index: 1;
+        position: absolute;
+        bottom: 0px;
+        height: 30px;
+        width: 100%;
+        background-color: rgba(black,0.6);
+        color: white;
+    }
+
+
+
+//    #list{
+//        display: flex;
+//        flex-wrap: wrap;
+//    }
+//    #list-item{
+//         width: 50vw;
+//         height: 50vh;
+//         display: flex;
+//    }
+//    #list-item-img{
+//         flex-grow: 1;
+//    }
+//    ion-img .img-loaded{
+//        width: 
+//    }
+    
+    // ion-card{
+    //     margin: 0 !important;
+    //     width: 100% !important;
+    //     height: 100% !important;
+    //     border-radius: 0 !important;
+    //     ion-card-content{
+    //         padding: 0 !important;
+    //         display: flex;
+    //         ion-img{
+    //             width: 100%;
+    //             height: auto;
+    //             // width: 100% !important;
+    //             // min-height: 38vh !important;
+    //             // .img-loaded{
+    //             //     min-width: 100% !important;
+    //             //     height: auto !important;
+    //             // }
+    //         }
+    //     }
+    // }
+    // ion-item{
+    //     width: 100px;
+    // }
+    // .item-md{
+    //     padding: 0;
+    // }
+    // .grid-img{
+    //     display: flex;
+    //     flex-flow: row nowrap;
+    //     align-items: center;
+    // }
+
 }
