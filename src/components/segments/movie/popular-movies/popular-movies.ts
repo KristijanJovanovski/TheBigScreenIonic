@@ -1,5 +1,7 @@
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { TmdbProvider } from './../../../../providers/tmdb/tmdb';
 import { Component  } from '@angular/core';
+
 
 
 

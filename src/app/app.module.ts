@@ -1,3 +1,5 @@
+
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { HttpModule } from '@angular/http';
 import { TmdbProvider } from './../providers/tmdb/tmdb';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -15,7 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    LazyLoadImageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
