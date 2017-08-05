@@ -1,25 +1,36 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title text-center >Movies</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
-
-<ion-content padding>
-  <ion-segment id='segments' color="primary">
-      <ion-segment-button value="Recommended" >
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segments" id='segments' color="primary">
+       <ion-segment-button value="Recommended" isActive >
         Recommended
-      </ion-segment-button>
-      <ion-segment-button value="In Theaters">
-        In Theaters
       </ion-segment-button>
        <ion-segment-button value="Popular" >
         Popular
+      </ion-segment-button>     
+      <ion-segment-button value="Trending">
+        Trending
       </ion-segment-button>
       <ion-segment-button value="Watchlist">
         Watchlist
       </ion-segment-button>
     </ion-segment>
- 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen [ngSwitch]="segments">
+  
+  <!-- <div *ngSwitchCase="Recommended">
+    <recommended-movies></recommended-movies>
+  </div> -->
+  <component-popular-movies *ngSwitchCase="'Popular'"></component-popular-movies>
+
+  <!-- <div *ngSwitchCase="Trending">
+    <trending-movies></trending-movies>
+  </div>
+  <div *ngSwitchCase="Watchlist">
+    <popular-movies></popular-movies>
+  </div> -->
+  
+  
+
 </ion-content>

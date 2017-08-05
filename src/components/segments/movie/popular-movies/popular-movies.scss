@@ -1,4 +1,4 @@
-page-movies {
+popular-movies {
     #segments{
         justify-content: space-between;
         overflow: auto;
@@ -16,6 +16,8 @@ page-movies {
 
         }
     }
+   
+
     ion-img{
         contain: content;
     }
