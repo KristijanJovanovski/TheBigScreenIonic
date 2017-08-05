@@ -19,8 +19,8 @@ export class TmdbProvider {
     console.log('Hello TmdbProvider Provider');
   }
 
-  getPopularMovies():Observable<any>{
-    return this.http.get(apiUrl+"movie/popular?"+apiKey)
+  getPopularMovies(page: number):Observable<any>{
+    return this.http.get(apiUrl+"movie/popular?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
       .map(response => response?response.results:[])
       .catch(error => {

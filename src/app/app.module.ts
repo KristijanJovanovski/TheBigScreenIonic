@@ -1,4 +1,3 @@
-
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { HttpModule } from '@angular/http';
 import { TmdbProvider } from './../providers/tmdb/tmdb';

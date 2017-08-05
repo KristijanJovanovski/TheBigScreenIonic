@@ -7,6 +7,6 @@ import { NgModule } from '@angular/core';
 	declarations: [PopularMovies],
 	imports: [IonicModule,LazyLoadImageModule],
 	exports: [PopularMovies],
-  	providers: [TmdbProvider]
+	providers: [TmdbProvider],
 })
 export class ComponentsModule {}

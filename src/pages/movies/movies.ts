@@ -1,6 +1,7 @@
+import { PopularMovies } from './../../components/segments/movie/popular-movies/popular-movies';
 import { TmdbProvider } from './../../providers/tmdb/tmdb';
-import { Component  } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { Component, ViewChild } from "@angular/core";
+import { NavController, IonicPage, Content } from "ionic-angular";
 
 
 @IonicPage()
@@ -10,15 +11,11 @@ import { NavController, IonicPage } from 'ionic-angular';
   providers: [TmdbProvider]
 })
 export class MoviesPage {
+
   popularMovies: object[] = [];
   errorMessage: any = '';
   segments: string;
-
-  // Segment
-  tab1Root = 'MoviesPage';
-  tab2Root = 'TvPage';
-  tab3Root = 'CalendarPage';
-  tab4Root = 'ProfilePage';
+  
   constructor(public navCtrl: NavController, private tmdbProvider:TmdbProvider) {
     this.segments = "Popular";
   }
@@ -29,17 +26,17 @@ export class MoviesPage {
    // this.getPopularMovies();
   }
 
-  // REST
-  getPopularMovies(){
-    this.tmdbProvider.getPopularMovies()
-      .subscribe(
-        result => this.popularMovies = result,
-        error => this.errorMessage = <any>error
-      );
-  }
-  getMovieDetails(id: any){
+  // // REST
+  // getPopularMovies(){
+  //   this.tmdbProvider.getPopularMovies()
+  //     .subscribe(
+  //       result => this.popularMovies = result,
+  //       error => this.errorMessage = <any>error
+  //     );
+  // }
+  // getMovieDetails(id: any){
     
-    console.log(id);
-   // this.navCtrl.push('MovieDetailsPage',{id : id});
-  }
+  //   console.log(id);
+  //  // this.navCtrl.push('MovieDetailsPage',{id : id});
+  // }
 }

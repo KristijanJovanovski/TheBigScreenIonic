@@ -17,12 +17,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen [ngSwitch]="segments">
+<ion-content fullscreen [ngSwitch]="segments" #myContent>
   
   <!-- <div *ngSwitchCase="Recommended">
     <recommended-movies></recommended-movies>
   </div> -->
-  <component-popular-movies *ngSwitchCase="'Popular'"></component-popular-movies>
+  <component-popular-movies *ngSwitchCase="'Popular'" [myContent]="myContent"></component-popular-movies>
 
   <!-- <div *ngSwitchCase="Trending">
     <trending-movies></trending-movies>
