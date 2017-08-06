@@ -16,7 +16,7 @@ component-popular-movies {
     }
     img {
         contain: content;
-        transition: opacity 1s;
+        transition: opacity 2s;
         opacity: 0.7;
     }
     img.ng-lazyloaded {
@@ -38,7 +38,6 @@ component-popular-movies {
              div {
                 flex-direction: row;
                 display: flex;
-                //height: 27px;
                 align-content: center;
                 ion-icon{
                     font-size: 1.8em;
@@ -62,17 +61,11 @@ component-popular-movies {
                 div {
                 flex-direction: row;
                 display: flex;
-                //height: 27px;
                 align-content: center;
                 ion-icon{
                     font-size: 1.8em;
                 }
             }
         }
-
-        // #ratings {
-        //     display: inline-block!important;
-        //     text-align: start;
-        // }
     }
 }

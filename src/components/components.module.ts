@@ -4,7 +4,7 @@ import { TmdbProvider } from './../providers/tmdb/tmdb';
 import { PopularMovies } from './segments/movie/popular-movies/popular-movies';
 import { NgModule } from '@angular/core';
 @NgModule({
-	declarations: [PopularMovies],
+	declarations: [PopularMovies,],
 	imports: [IonicModule,LazyLoadImageModule],
 	exports: [PopularMovies],
 	providers: [TmdbProvider],

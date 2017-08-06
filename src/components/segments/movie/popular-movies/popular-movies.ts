@@ -47,6 +47,8 @@ export class PopularMovies {
     this.navCtrl.push('MovieDetails',{id : id});
   }
 
+  // REST + Animations
+
   movieWatched(movie: any, event){
     console.log("Movie watched: "+movie.title);
     event.target.style.color = event.target.style.color ? '' : 'red';
@@ -69,6 +71,8 @@ export class PopularMovies {
 
     
   }
+
+  // Populate the feed 
 
   doInfinite(infiniteScroll) {
     console.log("Begin async operation");

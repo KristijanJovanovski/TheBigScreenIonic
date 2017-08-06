@@ -20,23 +20,7 @@ export class MoviesPage {
     this.segments = "Popular";
   }
 
-  // Lifecycle
   ngAfterViewInit(){
-
-   // this.getPopularMovies();
   }
 
-  // // REST
-  // getPopularMovies(){
-  //   this.tmdbProvider.getPopularMovies()
-  //     .subscribe(
-  //       result => this.popularMovies = result,
-  //       error => this.errorMessage = <any>error
-  //     );
-  // }
-  // getMovieDetails(id: any){
-    
-  //   console.log(id);
-  //  // this.navCtrl.push('MovieDetailsPage',{id : id});
-  // }
 }

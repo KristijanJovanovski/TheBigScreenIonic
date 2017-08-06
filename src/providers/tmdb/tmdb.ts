@@ -4,11 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch'
 
-/*
-  Generated class for the TmdbProvider provider.
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
+
 // Consts
 const apiKey = "api_key=4d6f4d5b0959e58630ef311044d93e2d";
 const apiUrl = "https://api.themoviedb.org/3/"
@@ -31,8 +27,8 @@ export class TmdbProvider {
       })
   }
   
-  getMovieById(id: string):Observable<any>{
-    return this.http.get(apiUrl+"movie/"+id+"?"+apiKey)
+  getMovieById(id: number):Observable<any>{
+    return this.http.get(apiUrl+"movie/"+id+"?"+apiKey+"&language=en-US&append_to_response=videos%2Crecommendations")
       .map(response => response.json())
       .catch(error => {
         let errMsg = (error.message) ? error.message :

@@ -1,3 +1,31 @@
-page-movie-details {
+movie-details {
+    ion-header{
+        ion-navbar{
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            color: white;
+            div.toolbar-background{
+                background-color: rgba(0,0,0, 0.3);
+                transition-timing-function: ease-out;
+                transition: background-color 0.5s;
+            }
+            button.back-button.bar-button{
+                color: white;
+            }
+            div.toolbar-content{
+                ion-title > div{
+                    color: white;
+                }
+            }
+        }
+    }
+    .header-image {
+        height: 40vh;
+        background-image: url("./../../assets/images/movie-poster-cover.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
 
+    }
 }
