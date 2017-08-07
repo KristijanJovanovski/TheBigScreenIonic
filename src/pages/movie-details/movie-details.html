@@ -2,16 +2,25 @@
 <ion-header>
 
   <ion-navbar>
-     <ion-title>{{title}}</ion-title> 
+     <ion-title>{{movie.title}}</ion-title> 
   </ion-navbar>
 </ion-header>
 
 
 <ion-content fullscreen parallax-header>
 
-  <div class="header-image"></div>
+  <div class="header-image" [lazyLoad]="cover"></div>
 
   <div class="main-content">
-    
+    <h1>{{movie.title}}</h1>
+    <h5>Popularity: {{movie.popularity}}</h5>
+    <h5>Votes: {{movie.vote_count}}</h5>
+    <h5>Avg Vote: {{movie.vote_average}}</h5>
+    <h5>Release date: {{movie.release_date}}</h5>
+    <h5>Revenue:${{movie.revenue}}</h5>
+    <h5>Budget: ${{movie.budget}}</h5>
+    <h5>Runtime: {{movie.runtime}}</h5>
+    <h5>{{movie.tagline}}</h5>
+    <h5>{{movie.overview}}</h5>
   </div>
 </ion-content>

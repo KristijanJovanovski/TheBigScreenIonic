@@ -32,7 +32,11 @@ export class ParallaxHeader {
         this.renderer.setElementStyle(this.header, 'webkitTransformOrigin', 'center bottom');
         this.renderer.setElementStyle(this.header, 'background-size', 'cover');
         this.renderer.setElementStyle(mainContent, 'position', 'absolute');
- 
+        
+        console.log(this.header);
+        console.log(mainContent);
+        
+        
     }
  
     onWindowResize(ev){
@@ -70,7 +74,12 @@ export class ParallaxHeader {
             this.renderer.setElementStyle(this.navbarBackground,
                  "transition",
                  "background-color 0.2s" );     
+        }else{
+            this.renderer.setElementStyle(this.navbarBackground,
+                 "background-color",
+                 "rgba(0,0,0, 0.3)" );
         }
+        
         this.renderer.setElementStyle(this.header, 'webkitTransform', 'translate3d(0,'+this.translateAmt+'px,0) scale('+this.scaleAmt+','+this.scaleAmt+')');
  
     }

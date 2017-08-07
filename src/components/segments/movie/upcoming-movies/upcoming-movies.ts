@@ -8,15 +8,15 @@ import { Content, NavController } from "ionic-angular";
 
 
 @Component({
-  selector: "component-popular-movies",
-  templateUrl: "popular-movies.html",
+  selector: "component-upcoming-movies",
+  templateUrl: "upcoming-movies.html",
   providers: [TmdbProvider],
 })
-export class PopularMovies {
+export class UpcomingMovies {
   page: number = 1;
   imageLink: string = "https://image.tmdb.org/t/p/w500/";
   @Input() myContent : Content;
-  popularMovies: object[] = [];
+  upcomingMovies: object[] = [];
   errorMessage: any = "";
 
   constructor(private tmdbProvider: TmdbProvider,private navCtrl: NavController) {}
@@ -24,17 +24,17 @@ export class PopularMovies {
   // Lifecycle
   ngAfterViewInit() {
     this.page = 1;
-    this.popularMovies = [];
-    this.getPopularMovies(this.page);
+    this.upcomingMovies = [];
+    this.getUpcomingMovies(this.page);
   }
   ionViewWillEnter() {}
 
   // REST
-  getPopularMovies(page: number): Promise<any> {
+  getUpcomingMovies(page: number): Promise<any> {
     return new Promise((resolve) => {
-      this.tmdbProvider.getPopularMovies(page).subscribe(result => {
+      this.tmdbProvider.getUpcomingMovies(page).subscribe(result => {
       result.forEach(x => {
-        this.popularMovies.push(x);
+        this.upcomingMovies.push(x);
       });
       this.page++;
       resolve();
@@ -69,14 +69,13 @@ export class PopularMovies {
     console.log("Rate Movie "+movie.title);
     event.target.parentElement.children[0].style.color = event.target.parentElement.children[0].style.color ? '' : 'red';
 
-    
   }
 
   // Populate the feed 
 
   doInfinite(infiniteScroll) {
     console.log("Begin async operation");
-     this.getPopularMovies(this.page).then(()=>{
+     this.getUpcomingMovies(this.page).then(()=>{
         console.log("Async operation has ended");
         setTimeout(() => {
           infiniteScroll.complete();

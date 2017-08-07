@@ -26,7 +26,41 @@ export class TmdbProvider {
         return Observable.throw(errMsg);
       })
   }
-  
+  getTopRatedMovies(page: number):Observable<any>{
+    return this.http.get(apiUrl+"movie/top_rated?"+apiKey+"&language=en-US&page="+page)
+      .map(response => response.json())
+      .map(response => response?response.results:[])
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+  getUpcomingMovies(page: number):Observable<any>{
+    return this.http.get(apiUrl+"movie/upcoming?"+apiKey+"&language=en-US&page="+page)
+      .map(response => response.json())
+      .map(response => response?response.results:[])
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+
+  getNowInTheaterMovies(page: number):Observable<any>{
+    return this.http.get(apiUrl+"movie/now_playing?"+apiKey+"&language=en-US&page="+page)
+      .map(response => response.json())
+      .map(response => response?response.results:[])
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+    
   getMovieById(id: number):Observable<any>{
     return this.http.get(apiUrl+"movie/"+id+"?"+apiKey+"&language=en-US&append_to_response=videos%2Crecommendations")
       .map(response => response.json())

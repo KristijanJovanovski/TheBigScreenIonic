@@ -1,5 +1,7 @@
+import { ViewChild } from '@angular/core';
+import { Content } from 'ionic-angular';
 import { TmdbProvider } from './../../providers/tmdb/tmdb';
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
@@ -10,15 +12,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   providers: [TmdbProvider]
 })
 export class MovieDetails {
+  movie: {}  = {};
+  cover: any;
+  backdrop_path: any;
   id: number;
   title: string = "";
   poster_path: string = "";
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public elementRef: ElementRef,
     public tmdbProvider: TmdbProvider
   ) {
-    this.id = Number.parseInt(this.navParams.get("id"));
+    let movieObj = this.navParams.get("movie");
+    this.movie = movieObj;
+    this.cover = "https://image.tmdb.org/t/p/original/"+movieObj.backdrop_path;
+    this.id = Number.parseInt(movieObj.id);
   }
 
   ionViewDidLoad() {
@@ -26,12 +35,9 @@ export class MovieDetails {
     this.getMovieDetails();
   }
 
-  getMovieDetails() {
-    this.tmdbProvider.getMovieById(this.id).subscribe(result => {
-      this.title = result.title;
-      // this.poster_path = "https://image.tmdb.org/t/p/w500/" + result.poster_path;
-      // console.log(this.poster_path);
-      
-    });
+  getMovieDetails(){
+        this.tmdbProvider.getMovieById(this.id).subscribe(result => {
+        this.movie = result;
+      });
   }
 }

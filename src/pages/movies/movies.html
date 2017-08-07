@@ -1,36 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-segment [(ngModel)]="segments" id='segments' color="primary">
-       <ion-segment-button value="Recommended" isActive >
+       <!-- <ion-segment-button value="Recommended" >
         Recommended
-      </ion-segment-button>
+      </ion-segment-button> -->
        <ion-segment-button value="Popular" >
         Popular
       </ion-segment-button>     
-      <ion-segment-button value="Trending">
-        Trending
+      <ion-segment-button value="TopRated">
+        Top Rated
       </ion-segment-button>
-      <ion-segment-button value="Watchlist">
+      <ion-segment-button value="BoxOffice">
+        Box Office
+      </ion-segment-button>
+      <ion-segment-button value="Upcoming">
+        Upcoming
+      </ion-segment-button>
+      
+      <!-- <ion-segment-button value="Watchlist">
         Watchlist
-      </ion-segment-button>
+      </ion-segment-button> -->
     </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen [ngSwitch]="segments" #myContent>
   
-  <!-- <div *ngSwitchCase="Recommended">
-    <recommended-movies></recommended-movies>
-  </div> -->
   <component-popular-movies *ngSwitchCase="'Popular'" [myContent]="myContent"></component-popular-movies>
 
-  <!-- <div *ngSwitchCase="Trending">
-    <trending-movies></trending-movies>
-  </div>
-  <div *ngSwitchCase="Watchlist">
-    <popular-movies></popular-movies>
-  </div> -->
-  
+  <component-top-rated-movies *ngSwitchCase="'TopRated'" [myContent]="myContent"></component-top-rated-movies>
+
+  <component-box-office-movies *ngSwitchCase="'BoxOffice'" [myContent]="myContent"></component-box-office-movies> 
+
+  <component-upcoming-movies *ngSwitchCase="'Upcoming'" [myContent]="myContent"></component-upcoming-movies> 
+
   
 
 </ion-content>

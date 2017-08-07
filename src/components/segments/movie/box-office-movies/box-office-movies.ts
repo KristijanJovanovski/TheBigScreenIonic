@@ -8,15 +8,15 @@ import { Content, NavController } from "ionic-angular";
 
 
 @Component({
-  selector: "component-popular-movies",
-  templateUrl: "popular-movies.html",
+  selector: "component-box-office-movies",
+  templateUrl: "box-office-movies.html",
   providers: [TmdbProvider],
 })
-export class PopularMovies {
+export class BoxOfficeMovies {
   page: number = 1;
   imageLink: string = "https://image.tmdb.org/t/p/w500/";
   @Input() myContent : Content;
-  popularMovies: object[] = [];
+  boxOfficeMovies: object[] = [];
   errorMessage: any = "";
 
   constructor(private tmdbProvider: TmdbProvider,private navCtrl: NavController) {}
@@ -24,17 +24,17 @@ export class PopularMovies {
   // Lifecycle
   ngAfterViewInit() {
     this.page = 1;
-    this.popularMovies = [];
-    this.getPopularMovies(this.page);
+    this.boxOfficeMovies = [];
+    this.getBoxOfficeMovies(this.page);
   }
   ionViewWillEnter() {}
 
   // REST
-  getPopularMovies(page: number): Promise<any> {
+  getBoxOfficeMovies(page: number): Promise<any> {
     return new Promise((resolve) => {
-      this.tmdbProvider.getPopularMovies(page).subscribe(result => {
+      this.tmdbProvider.getNowInTheaterMovies(page).subscribe(result => {
       result.forEach(x => {
-        this.popularMovies.push(x);
+        this.boxOfficeMovies.push(x);
       });
       this.page++;
       resolve();
@@ -76,7 +76,7 @@ export class PopularMovies {
 
   doInfinite(infiniteScroll) {
     console.log("Begin async operation");
-     this.getPopularMovies(this.page).then(()=>{
+     this.getBoxOfficeMovies(this.page).then(()=>{
         console.log("Async operation has ended");
         setTimeout(() => {
           infiniteScroll.complete();

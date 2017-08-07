@@ -22,10 +22,22 @@ movie-details {
     }
     .header-image {
         height: 40vh;
-        background-image: url("./../../assets/images/movie-poster-cover.jpg");
+        background-image: url("./../../assets/images/Trakt-backdrop-placeholder.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-
+        transition: opacity 2s;
+        transition-timing-function: linear;
+        opacity: 0.9;
+    }
+    .ng-lazyloaded {
+        opacity: 1;
+        height: 40vh;
+    }
+    .main-content{
+        padding: 15px;
+        padding-bottom: 56px!important;
+        background-color: black;
+        color: white;
     }
 }
