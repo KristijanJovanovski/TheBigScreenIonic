@@ -1,31 +1,7 @@
 page-movies {
-    #segments{
-        justify-content: space-between;
-        overflow: auto;
+    super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .indicator {
+        background-color: orange;
+        color: orange;
+    }
 
-        &::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-            display: none;
-        }
-        ion-segment-button{
-            font-size: 0.7em;
-            display: inline-block!important;
-            min-width: 90px!important;
-            width: auto!important;
-
-        }
-    }
-    ion-img{
-        contain: content;
-    }
-    #description{
-        z-index: 1;
-        position: absolute;
-        bottom: 0px;
-        height: 30px;
-        width: 100%;
-        background-color: rgba(black,0.6);
-        color: white;
-    }
 }

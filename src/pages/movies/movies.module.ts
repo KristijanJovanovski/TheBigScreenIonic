@@ -1,4 +1,5 @@
-import { ComponentsModule } from './../../components/components.module';
+
+import { SuperTabsModule } from 'ionic2-super-tabs';
 import { MoviesPage } from './movies';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
@@ -10,10 +11,10 @@ import { IonicPageModule } from 'ionic-angular';
   ],
   imports: [
     IonicPageModule.forChild(MoviesPage),
-    ComponentsModule
+    SuperTabsModule,
   ],
   exports: [
     MoviesPage
   ]
 })
-export class MoviesModule {}
+export class TvModule {}

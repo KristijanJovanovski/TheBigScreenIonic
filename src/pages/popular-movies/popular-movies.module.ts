@@ -1,22 +1,21 @@
-import { DirectivesModule } from './../../directives/directives.module';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 import { TmdbProvider } from './../../providers/tmdb/tmdb';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { MovieDetailsPage } from './movie-details';
+import { PopularMoviesPage } from './popular-movies';
 
 @NgModule({
   declarations: [
-    MovieDetailsPage,
+    PopularMoviesPage,
   ],
   imports: [
-    IonicPageModule.forChild(MovieDetailsPage),
-    LazyLoadImageModule,
-    DirectivesModule
+    IonicPageModule.forChild(PopularMoviesPage),
+		LazyLoadImageModule
   ],
   exports:[
-    MovieDetailsPage
+    PopularMoviesPage
   ],
   providers:[TmdbProvider]
 })
-export class MovieDetailsModule {}
+export class PopularMoviesModule {}

@@ -1,4 +1,4 @@
-component-popular-movies {
+airing-today-tv {
     #segments {
         justify-content: space-between;
         overflow: auto;
@@ -53,7 +53,7 @@ component-popular-movies {
                 }
             }
         }
-        ion-col.movie-actions{
+        ion-col.tv-actions{
             padding: 0 5px;
             min-height: 27px;
             display: flex;

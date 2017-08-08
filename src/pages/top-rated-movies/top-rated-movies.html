@@ -1,10 +1,10 @@
-
+<ion-content #myContent>  
    <ion-grid fixed no-padding>
     <ion-row align-items-stretch	>
-       <ion-col col-6 col-md-4 col-lg-3 col-xl-2 align-self-stretch align-self-center *ngFor="let movie of upcomingMovies">
-        <img 
+       <ion-col col-6 col-md-4 col-lg-3 col-xl-2 align-self-stretch align-self-center *ngFor="let movie of topRatedMovies">
+       <img 
           [scrollObservable]="myContent.ionScroll" 
-          [defaultImage]="'./../../../assets/images/Trakt-placeholder.png'" 
+          [defaultImage]="'assets/images/Trakt-placeholder.png'" 
           [lazyLoad]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
           (click)="getMovieDetails(movie)" [offset]="'100'">
         <ion-row id="description">
@@ -16,7 +16,7 @@
           <ion-col class="movie-actions" col-6 align-self-center>
             <div (click)="movieWatched(movie, $event)"><ion-icon name="eye" ></ion-icon></div>
             <div (click)="movieFavorite(movie, $event)"><ion-icon name="heart" ></ion-icon></div>
-            <div (click)="watchMovie(movie)"><ion-icon name="play" color="primary"></ion-icon></div>  
+            <div (click)="watchMovie(movie)"><ion-icon name="play" color="secondary"></ion-icon></div>  
           </ion-col>       
         </ion-row>
       </ion-col> 
@@ -25,4 +25,4 @@
       </ion-infinite-scroll>
     </ion-row>
   </ion-grid>
- 
+ </ion-content>

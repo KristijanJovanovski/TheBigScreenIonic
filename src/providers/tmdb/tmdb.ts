@@ -49,7 +49,7 @@ export class TmdbProvider {
       })
   }
 
-  getNowInTheaterMovies(page: number):Observable<any>{
+  getBoxOfficeMovies(page: number):Observable<any>{
     return this.http.get(apiUrl+"movie/now_playing?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
       .map(response => response?response.results:[])
@@ -63,6 +63,66 @@ export class TmdbProvider {
     
   getMovieById(id: number):Observable<any>{
     return this.http.get(apiUrl+"movie/"+id+"?"+apiKey+"&language=en-US&append_to_response=videos%2Crecommendations")
+      .map(response => response.json())
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+
+
+  /*--------------------------------------------TV--------------------------------------------------*/
+  
+  getPopularTv(page: number):Observable<any>{
+    return this.http.get(apiUrl+"tv/popular?"+apiKey+"&language=en-US&page="+page)
+      .map(response => response.json())
+      .map(response => response?response.results:[])
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+  getTopRatedTv(page: number):Observable<any>{
+    return this.http.get(apiUrl+"tv/top_rated?"+apiKey+"&language=en-US&page="+page)
+      .map(response => response.json())
+      .map(response => response?response.results:[])
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+  getAiringTodayTv(page: number):Observable<any>{
+    return this.http.get(apiUrl+"tv/airing_today?"+apiKey+"&language=en-US&page="+page)
+      .map(response => response.json())
+      .map(response => response?response.results:[])
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+
+  getOnTheAirTv(page: number):Observable<any>{
+    return this.http.get(apiUrl+"tv/on_the_air?"+apiKey+"&language=en-US&page="+page)
+      .map(response => response.json())
+      .map(response => response?response.results:[])
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
+    
+  getTvById(id: number):Observable<any>{
+    return this.http.get(apiUrl+"tv/"+id+"?"+apiKey+"&language=en-US&append_to_response=videos%2Crecommendations")
       .map(response => response.json())
       .catch(error => {
         let errMsg = (error.message) ? error.message :

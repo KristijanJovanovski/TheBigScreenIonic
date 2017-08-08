@@ -1,26 +1,20 @@
-import { PopularMovies } from './../../components/segments/movie/popular-movies/popular-movies';
-import { TmdbProvider } from './../../providers/tmdb/tmdb';
-import { Component, ViewChild } from "@angular/core";
-import { NavController, IonicPage, Content } from "ionic-angular";
-
+import { Component } from '@angular/core';
+import { NavController, IonicPage } from 'ionic-angular';
+import { SuperTabsController } from "ionic2-super-tabs/dist";
 
 @IonicPage()
 @Component({
   selector: 'page-movies',
-  templateUrl: 'movies.html',
-  providers: [TmdbProvider]
+  templateUrl: 'movies.html'
 })
 export class MoviesPage {
 
-  popularMovies: object[] = [];
-  errorMessage: any = '';
-  segments: string;
-  
-  constructor(public navCtrl: NavController, private tmdbProvider:TmdbProvider) {
-    this.segments = "Popular";
-  }
-
-  ngAfterViewInit(){
+  page1: any = 'PopularMoviesPage';
+  page2: any = 'TopRatedMoviesPage';
+  page3: any = 'BoxOfficeMoviesPage';
+  page4: any = 'UpcomingMoviesPage';
+  constructor(public navCtrl: NavController, private superTabsCtrl: SuperTabsController) {
+    
   }
 
 }

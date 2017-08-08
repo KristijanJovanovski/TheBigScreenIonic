@@ -1,0 +1,32 @@
+tabs{
+
+    ion-content.content.content-md{
+        background-color: rgb(34,34,34);
+    }
+    background-color: rgb(34,34,34);
+    .infinite-scroll{
+        background-color: rgb(34,34,34);
+    }
+
+    .tabs-md .tabbar {
+        background: rgb(34,34,34);
+    }
+    .tabs-md .tab-button[aria-selected=true] {
+        color: orange;
+        opacity: 1;
+    }
+    .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+        color: white;
+        opacity: 1;
+    }
+
+    .tabs-md .tab-button[aria-selected=false] {
+        color: white;
+        opacity: 0.8;
+    }
+    .tabs-md .tab-button[aria-selected=false] .tab-button-icon {
+        color: white;
+        opacity: 0.8;
+    }
+
+}

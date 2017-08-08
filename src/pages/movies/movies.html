@@ -1,39 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="segments" id='segments' color="primary">
-       <!-- <ion-segment-button value="Recommended" >
-        Recommended
-      </ion-segment-button> -->
-       <ion-segment-button value="Popular" >
-        Popular
-      </ion-segment-button>     
-      <ion-segment-button value="TopRated">
-        Top Rated
-      </ion-segment-button>
-      <ion-segment-button value="BoxOffice">
-        Box Office
-      </ion-segment-button>
-      <ion-segment-button value="Upcoming">
-        Upcoming
-      </ion-segment-button>
-      
-      <!-- <ion-segment-button value="Watchlist">
-        Watchlist
-      </ion-segment-button> -->
-    </ion-segment>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content fullscreen [ngSwitch]="segments" #myContent>
-  
-  <component-popular-movies *ngSwitchCase="'Popular'" [myContent]="myContent"></component-popular-movies>
-
-  <component-top-rated-movies *ngSwitchCase="'TopRated'" [myContent]="myContent"></component-top-rated-movies>
-
-  <component-box-office-movies *ngSwitchCase="'BoxOffice'" [myContent]="myContent"></component-box-office-movies> 
-
-  <component-upcoming-movies *ngSwitchCase="'Upcoming'" [myContent]="myContent"></component-upcoming-movies> 
-
-  
-
-</ion-content>
+<super-tabs tabsPlacement="top" toolbarColor="light" toolbarBackground="dark" indicatorColor="light" scrollTabs="true" >
+  <super-tab [root]="page1" title="Popular"></super-tab>
+  <super-tab [root]="page2" title="Top Rated"></super-tab>
+  <super-tab [root]="page3" title="Box Office"></super-tab>
+  <super-tab [root]="page4" title="Upcoming"></super-tab>
+</super-tabs>

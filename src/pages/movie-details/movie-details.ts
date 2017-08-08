@@ -11,7 +11,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: "movie-details.html",
   providers: [TmdbProvider]
 })
-export class MovieDetails {
+export class MovieDetailsPage {
   movie: {}  = {};
   cover: any;
   backdrop_path: any;
@@ -31,7 +31,10 @@ export class MovieDetails {
   }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad MovieDetails");
+    console.log("ionViewDidLoad MovieDetailsPage");
+    // console.log(this.elementRef.nativeElement.parentElement.parentElement.parentElement);
+
+    // .getElementsByClassName("toolbar-background")["0"];
     this.getMovieDetails();
   }
 
