@@ -1,0 +1,20 @@
+
+<ion-content>
+  <div class="close-wrapper">
+      <button id="close-modal-btn" ion-button clear large icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+  </div>
+ 
+  <div class="poster-wrapper">
+    <img class="poster"
+      [defaultImage]="'assets/images/Trakt-placeholder.png'" 
+      [lazyLoad]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+  </div>
+  <div class="circles-wrapper">
+    <button ion-button color="dark" (click)="Rated('0',$event)" class="circle circle-small circle-1">Awful</button>
+    <button ion-button color="primary" (click)="Rated('1',$event)" class="circle circle-big circle-2">Meh</button>
+    <button ion-button color="secondary" (click)="Rated('2',$event)" class="circle circle-big circle-3">Good</button>
+    <button ion-button color="danger" (click)="Rated('3',$event)" class="circle circle-small circle-4">Amazing</button>
+  </div>
+</ion-content>

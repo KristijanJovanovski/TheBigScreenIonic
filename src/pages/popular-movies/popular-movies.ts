@@ -1,6 +1,6 @@
 import { TmdbProvider } from './../../providers/tmdb/tmdb';
 import { Component, Input } from "@angular/core";
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, ModalController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -21,7 +21,8 @@ export class PopularMoviesPage {
   constructor(
     public navCtrl: NavController,
     private navParams: NavParams,
-    private tmdbProvider: TmdbProvider
+    private tmdbProvider: TmdbProvider,
+    public modalCtrl: ModalController
   ) {
     this.rootNavCtrl = navParams.get("rootNavCtrl");
   }
@@ -57,8 +58,14 @@ export class PopularMoviesPage {
 
   movieWatched(movie: any, event) {
     console.log("Movie watched: " + movie.title);
-    event.target.style.color = event.target.style.color ? "" : "red";
-    // register and persist data about the user
+    if(!event.target.style.color){
+      event.target.style.color = 'red';
+      event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.style.opacity = '0.1'; 
+    }else{
+      event.target.style.color = '';
+      event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.style.opacity = '1'; 
+    }
+    // register and persist data about the user and the movie
   }
   movieFavorite(movie: any, event) {
     console.log("Movie favorited: " + movie.title);
@@ -70,11 +77,22 @@ export class PopularMoviesPage {
     // register and persist data about the user
   }
   rateMovie(movie: any, event) {
-    console.log("Rate Movie " + movie.title);
-    event.target.parentElement.children[0].style.color = event.target
-      .parentElement.children[0].style.color
-      ? ""
-      : "red";
+    console.log("Rate Movie: " + movie.title);
+    console.log(event);
+    
+    if(event.target.parentElement.children[0].style.color){
+      event.target.parentElement.children[0].style.color = '';
+      // TODO: Unrate movie
+    }else{
+      let myModal = this.modalCtrl.create("ModalRate",{"movie": movie});
+      myModal.present();
+      myModal.onDidDismiss((data) => {
+        console.log("I have dismissed.");
+        if(data)
+          event.target.parentElement.children[0].style.color = "red";
+        console.log(data);
+      });
+    }
   }
 
   // Populate the feed
