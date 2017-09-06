@@ -10,6 +10,27 @@ import {SuperTabsModule } from 'ionic2-super-tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { AuthProvider } from '../providers/auth/auth';
+import { DatabaseProvider } from '../providers/database/database';
+import { OmdbProvider } from '../providers/omdb/omdb';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCupvz_AG8N7x5DNIZl1mOFQZFM8Y7bDmk",
+  authDomain: "the-big-screen-a649c.firebaseapp.com",
+  databaseURL: "https://the-big-screen-a649c.firebaseio.com",
+  projectId: "the-big-screen-a649c",
+  storageBucket: "",
+  messagingSenderId: "997676054462"
+};
+
+
 @NgModule({
   declarations: [
     MyApp
@@ -19,7 +40,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true}),
     SuperTabsModule,
     HttpModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,7 +54,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TmdbProvider,
-    SuperTabsController
+    SuperTabsController,
+    Facebook,
+    GooglePlus,
+    AuthProvider,
+    DatabaseProvider,
+    OmdbProvider,
   ]
 })
 export class AppModule {}

@@ -1,0 +1,73 @@
+
+<ion-content class="loginContent" >
+  <!-- <img src="http://placehold.it/300x100"> -->
+  <div class="background-img">
+
+  </div>
+  <div class="loginMain">
+    <form class="loginForm" [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input formControlName="email" type="email" placeholder="Your email address" 
+          [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" 
+        *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+        <p>Please enter a valid email.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input formControlName="password" type="password" placeholder="Your password" 
+          [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" 
+        *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+        <p>Password is too short.</p>
+      </ion-item>
+
+      <button ion-button block type="submit" [disabled]="!loginForm.valid">
+        Login
+      </button>
+
+    </form>
+
+    <div class="registerAndForgot">    
+      <button ion-button clear (tap)="createAccount()">
+        Create a new account
+      </button>
+
+      <button ion-button clear (tap)="ResetPassword()">
+        I forgot my password
+      </button>
+    </div>
+
+    <hr class="hr-text" data-content="OR CONNECT WITH:">
+    <div class="socialLinks" >
+    
+      <button ion-button color="possitive" round outline icon-left class="login-social" (tap)="facebookLogin()">
+        <ion-icon name="logo-facebook" > Facebook</ion-icon>
+      </button>
+      
+      <button ion-button color="danger" round outline icon-left class="login-social"  (tap)="googleLogin()">
+        <ion-icon name="logo-google" > Google</ion-icon>
+      </button>
+
+    
+    </div>
+  </div>  
+
+</ion-content>
+<!-- 
+<ion-content padding>
+
+  <button ion-button color="danger" (tap)="googleLogin()">
+    <ion-icon name="logo-googleplus"></ion-icon>
+  </button>
+
+  <button ion-button color="possitive" (tap)="facebookLogin()">
+    <ion-icon name="logo-facebook"></ion-icon>
+  </button>
+
+</ion-content> -->
