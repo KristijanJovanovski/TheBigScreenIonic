@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ParallaxHeader } from './parallax-header/parallax-header';
 @NgModule({
-	declarations: [ParallaxHeader],
+	declarations: [ParallaxHeader,],
 	imports: [],
-	exports: [ParallaxHeader]
+	exports: [ParallaxHeader,]
 })
 export class DirectivesModule {}

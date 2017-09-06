@@ -7,11 +7,41 @@
 </ion-header>
 
 
-<ion-content fullscreen parallax-header>
+<ion-content fullscreen parallax-header  #myScrollActors>
 
   <div class="header-image" [defaultImage]="'assets/images/Trakt-backdrop-placeholder.jpg'" [lazyLoad]="cover"></div>
 
   <div class="main-content">
+    <div class="row movie-profile">
+      <div class="cloak">
+        
+      </div>
+      <img class="movie-profile-image" [defaultImage]="'assets/images/Trakt-backdrop-placeholder.jpg'" 
+          [lazyLoad]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+        
+        <div class="description">
+          <div class="movie-title">
+            {{movie.title}}
+            <div class="inline">
+              ({{movie.release_date|date:"yyyy"}})
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="row ratings">
+      <div *ngFor="let rating of ratings"  class="col rating">
+        <img *ngIf="rating.Source === 'Internet Movie Database'"  src="assets/images/imdb@2x.png" alt="">
+        <img *ngIf="rating.Source === 'Metacritic'"  src="assets/images/mc@2x.png" alt="">
+        <img *ngIf="rating.Source === 'Rotten Tomatoes'"  src="assets/images/rtfresh@2x.png" alt="">
+        <img *ngIf="rating.Source === 'TMDb'"  src="assets/images/tmdb@2x.png" alt="">
+        
+        <span class="rate">{{rating.Value}}</span>
+        <span class="site" *ngIf="rating.Source !=='Internet Movie Database'" >{{rating.Source}}</span>
+        <span class="site" *ngIf="rating.Source ==='Internet Movie Database'" >IMDb</span>
+        
+      </div>
+    </div>
     <h1>{{movie.title}}</h1>
     <h5>Popularity: {{movie.popularity}}</h5>
     <h5>Votes: {{movie.vote_count}}</h5>
@@ -22,5 +52,27 @@
     <h5>Runtime: {{movie.runtime}}</h5>
     <h5>{{movie.tagline}}</h5>
     <h5>{{movie.overview}}</h5>
+    
+      <ion-scroll class="actorScroll" scrollX="true">
+        <div class="inner" >
+          <div class="actor" *ngFor="let actor of cast">
+                <img *ngIf="actor.profile_path"  class="actorImg" [src]="'https://image.tmdb.org/t/p/w500/' + actor.profile_path">
+                <img *ngIf="!actor.profile_path" class="actorImg" [src]="'assets/images/Trakt-placeholder.png'">
+                <div class="cloak">
+                  <h6 class="actorName">{{actor.name}}</h6>
+                  <h6 class="character">{{actor.character}}</h6>
+                </div>
+              <!-- <img class="actorImg"
+              [scrollObservable]="myScrollActors.ionScroll" 
+              [defaultImage]="'assets/images/Trakt-placeholder.png'" 
+              [lazyLoad]="'https://image.tmdb.org/t/p/w500/' + actor.profile_path"> -->
+          </div>
+        </div>
+      </ion-scroll>
+
+      <section class="youtubeVideo" *ngIf="trailer" >
+        <iframe class="youtubeVideo" [src]='trailer | youtube' frameborder="0" allowfullscreen></iframe>     
+      </section>
+      
   </div>
 </ion-content>

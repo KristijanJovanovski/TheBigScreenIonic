@@ -72,7 +72,16 @@ export class TmdbProvider {
       })
   }
 
-
+  getMovieCredits(id: number):Observable<any>{
+    return this.http.get(apiUrl+"movie/"+id+"/credits"+"?"+apiKey+"&language=en-US&append_to_response=videos%2Crecommendations")
+      .map(response => response.json())
+      .catch(error => {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+      })
+  }
   /*--------------------------------------------TV--------------------------------------------------*/
   
   getPopularTv(page: number):Observable<any>{
