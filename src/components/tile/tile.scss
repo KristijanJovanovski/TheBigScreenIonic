@@ -1,0 +1,86 @@
+tile {
+    i.fa{
+        transition: color 350ms;
+        transition-timing-function: ease-out;
+    }
+    .rated-action{
+        color: gold;
+    }
+    .watched-action{
+        color: red;
+    }
+    .bookmarked-action{
+        color: blue;
+    }
+    div.tile{
+        height: 100%;
+        position: relative;
+        img{
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            transition: opacity 500ms;
+            transition-timing-function: ease-out;
+            opacity: 0.8;
+        }
+        .ng-lazyloaded {
+            opacity: 1;
+        }
+        div.description{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 100%;
+
+            z-index: 2;
+            // position: relative;
+            // bottom: 16%;
+            position: absolute;
+            bottom: 0px;
+
+            height: 15%;
+            width: 100%;
+            
+            color: white;
+            background-color: rgba(black, 0.6);
+            
+            div.ratings{
+                display: flex;
+                align-items: center;
+                color: white;
+
+                div.rate{
+                    height: 100%;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    align-items: center;
+                    justify-content: flex-start;
+                    i{
+                        color: gold;
+                    }
+                    i,span{            
+                        font-size: 2rem;
+                        padding-left: 5px;
+                    }
+                }
+            }
+            div.asset-actions{
+                align-items: center;
+                color: white;
+
+                height: 100%;
+                width: 100%;
+
+                display: flex;
+                justify-content: space-around;
+                    div {
+                    flex-direction: row;
+                    display: flex;
+                    align-content: center;
+                    i{
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -19,14 +19,14 @@ export class ModalRate {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalRate');
   }
-  dismiss(val:string) {
+  dismiss(val:any) {
     if(val!='')
       this.viewCtrl.dismiss(val);
     else
       this.viewCtrl.dismiss();
   }
   Rated(val:string,event:any){
-    this.dismiss(val);
+    this.dismiss({value: val});
   }
 
 }

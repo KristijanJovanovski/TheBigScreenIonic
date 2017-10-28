@@ -1,3 +1,4 @@
+import { DatabaseProvider } from './../providers/database/database';
 import { Component } from "@angular/core";
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -32,9 +33,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      
       if(platform.is('android') || platform.is('ios')){
         keyboard.disableScroll(true);
+        
       }
     });
   }

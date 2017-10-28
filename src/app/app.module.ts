@@ -6,30 +6,22 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import {SuperTabsModule } from 'ionic2-super-tabs';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-
-import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from "../../firebase.config";
+import { AngularFireModule  } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from "angularfire2/firestore";
 
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AuthProvider } from '../providers/auth/auth';
 import { DatabaseProvider } from '../providers/database/database';
 import { OmdbProvider } from '../providers/omdb/omdb';
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyCupvz_AG8N7x5DNIZl1mOFQZFM8Y7bDmk",
-  authDomain: "the-big-screen-a649c.firebaseapp.com",
-  databaseURL: "https://the-big-screen-a649c.firebaseio.com",
-  projectId: "the-big-screen-a649c",
-  storageBucket: "",
-  messagingSenderId: "997676054462"
-};
-
+import { UserPreferenceProvider } from '../providers/user-preference/user-preference';
 
 @NgModule({
   declarations: [
@@ -37,13 +29,23 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true}),
+    IonicModule.forRoot(MyApp,
+      {
+        tabsHideOnSubPages: true,
+        platforms : {
+          ios : { scrollAssist : false, autoFocusAssist : false},
+          android : { scrollAssist : false, autoFocusAssist : false},
+          windows : { scrollAssist : false, autoFocusAssist : false}
+        }
+      }),
     SuperTabsModule,
     HttpModule,
     LazyLoadImageModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,6 +62,7 @@ export const firebaseConfig = {
     AuthProvider,
     DatabaseProvider,
     OmdbProvider,
+    UserPreferenceProvider,
   ]
 })
 export class AppModule {}

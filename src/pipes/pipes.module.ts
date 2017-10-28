@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { YoutubePipe } from './youtube/youtube';
+import { PageTitlePipe } from './page-title/page-title';
 @NgModule({
-	declarations: [YoutubePipe],
+	declarations: [YoutubePipe,
+    PageTitlePipe],
 	imports: [],
-	exports: [YoutubePipe]
+	exports: [YoutubePipe,
+    PageTitlePipe]
 })
 export class PipesModule {}

@@ -1,23 +1,31 @@
+import { TvEpisode } from './TvEpisode';
+import { TvSeason } from './TvSeason';
+import { TvShow } from './TvShow';
+import { Movie } from './Movie';
 export class User {
-    id: string;
+    uid: string;
     firstName: string;
-    secondName: string;
-    userName: string;
+    lastName: string;
+    username: string;
     avatar: any;
     lastLogin: string;
-    totalMovieTime: string;
-    totalTvTime: string;
-    
+    totalMovieTime: number;
+    totalTvTime: number;
+    gender: string;
+    email: string;
 
 //  Lists
-    watchedMovies: [any];
-    ratedMovies: [any];
-    bookmarkedMovies: [any];
-    watchedTvSeries: [any];
-    ratedTvSeries: [any];
-    bookmarkedTvSeries: [any];
-    watchedTvEpisodes: [any];
-    ratedTvEpisodes: [any];
-    bookmarkedEpisodes: [any];
-    logins: [string]
+    bookmarkedMovies: [Movie];
+    bookmarkedTvShows: [TvShow];
+
+    ratedMovies: [Movie];
+    ratedTvShows: [TvShow];
+    ratedTvSeasons: [TvSeason];
+    ratedTvEpisodes: [TvEpisode];
+
+    watchedMovies: [Movie];
+    watchedTvShows: [TvShow];
+    watchedTvEpisodes: [TvEpisode];
+
+    logins: [Date]
 }

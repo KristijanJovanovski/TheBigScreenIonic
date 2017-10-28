@@ -1,0 +1,21 @@
+
+<div class="grid-of-tiles">
+  <tile 
+    *ngFor="let asset of assets"
+    [asset]='asset' 
+    [myContent]='myContent'
+    [assetCategory]='assetCategory'
+    (rated)="Rated($event)"
+    (bookmarked)="Bookmarked($event)"
+    (watched)="Watched($event)"
+    >
+  </tile>
+  
+  <ion-infinite-scroll *ngIf='!finishedScroll' [threshold]='"50px"' (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content [loadingSpinner]='"dots"'></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>
+
+
+
+ 

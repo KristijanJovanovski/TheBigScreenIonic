@@ -1,3 +1,5 @@
+import { TvShow } from './../../models/TvShow';
+import { Movie } from './../../models/Movie';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -15,10 +17,10 @@ export class TmdbProvider {
     console.log('Hello TmdbProvider Provider');
   }
 
-  getPopularMovies(page: number):Observable<any>{
+  getPopularMovies(page: number):Observable<Movie[]>{
     return this.http.get(apiUrl+"movie/popular?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as Movie[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -26,10 +28,10 @@ export class TmdbProvider {
         return Observable.throw(errMsg);
       })
   }
-  getTopRatedMovies(page: number):Observable<any>{
+  getTopRatedMovies(page: number):Observable<Movie[]>{
     return this.http.get(apiUrl+"movie/top_rated?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as Movie[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -37,10 +39,10 @@ export class TmdbProvider {
         return Observable.throw(errMsg);
       })
   }
-  getUpcomingMovies(page: number):Observable<any>{
+  getUpcomingMovies(page: number):Observable<Movie[]>{
     return this.http.get(apiUrl+"movie/upcoming?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as Movie[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -49,10 +51,10 @@ export class TmdbProvider {
       })
   }
 
-  getBoxOfficeMovies(page: number):Observable<any>{
+  getBoxOfficeMovies(page: number):Observable<Movie[]>{
     return this.http.get(apiUrl+"movie/now_playing?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as Movie[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -61,7 +63,7 @@ export class TmdbProvider {
       })
   }
     
-  getMovieById(id: number):Observable<any>{
+  getMovieById(id: number):Observable<Movie>{
     return this.http.get(apiUrl+"movie/"+id+"?"+apiKey+"&language=en-US&append_to_response=videos%2Crecommendations")
       .map(response => response.json())
       .catch(error => {
@@ -84,10 +86,10 @@ export class TmdbProvider {
   }
   /*--------------------------------------------TV--------------------------------------------------*/
   
-  getPopularTv(page: number):Observable<any>{
+  getPopularTvShows(page: number):Observable<TvShow[]>{
     return this.http.get(apiUrl+"tv/popular?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as TvShow[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -95,10 +97,10 @@ export class TmdbProvider {
         return Observable.throw(errMsg);
       })
   }
-  getTopRatedTv(page: number):Observable<any>{
+  getTopRatedTvShows(page: number):Observable<TvShow[]>{
     return this.http.get(apiUrl+"tv/top_rated?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as TvShow[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -106,10 +108,10 @@ export class TmdbProvider {
         return Observable.throw(errMsg);
       })
   }
-  getAiringTodayTv(page: number):Observable<any>{
+  getAiringTodayTvShows(page: number):Observable<TvShow[]>{
     return this.http.get(apiUrl+"tv/airing_today?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as TvShow[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -118,10 +120,10 @@ export class TmdbProvider {
       })
   }
 
-  getOnTheAirTv(page: number):Observable<any>{
+  getOnTheAirTvShows(page: number):Observable<TvShow[]>{
     return this.http.get(apiUrl+"tv/on_the_air?"+apiKey+"&language=en-US&page="+page)
       .map(response => response.json())
-      .map(response => response?response.results:[])
+      .map(response => response?response.results as TvShow[]:[])
       .catch(error => {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
@@ -130,7 +132,7 @@ export class TmdbProvider {
       })
   }
     
-  getTvById(id: number):Observable<any>{
+  getTvShowsById(id: number):Observable<TvShow>{
     return this.http.get(apiUrl+"tv/"+id+"?"+apiKey+"&language=en-US&append_to_response=videos%2Crecommendations")
       .map(response => response.json())
       .catch(error => {

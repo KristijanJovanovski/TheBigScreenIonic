@@ -1,3 +1,4 @@
+import { DatabaseProvider } from './../../providers/database/database';
 import { AuthProvider } from './../../providers/auth/auth';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController } from 'ionic-angular';
@@ -17,6 +18,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     public authProvider: AuthProvider, 
+    public database: DatabaseProvider,
     public formBuilder: FormBuilder, 
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController) {
@@ -30,9 +32,9 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  Enter(promise:any):void{
+  Enter(promise:any,type: string):void{
     promise.then(() => {
-        this.navCtrl.setRoot('tabs-page');
+        // this.navCtrl.setRoot('tabs-page');
       }, (error) => {
         this.loading.dismiss().then( () => {
           var errorMessage: string = error.message;
@@ -56,11 +58,11 @@ export class LoginPage {
   }
 
   googleLogin(): void {
-    this.Enter(this.authProvider.googleLogin())
+    this.Enter(this.authProvider.googleLogin(),"social")
   }
 
   facebookLogin(): void {
-    this.Enter(this.authProvider.facebookLogin())
+    this.Enter(this.authProvider.facebookLogin(),"social")
   }
 
 
@@ -70,7 +72,7 @@ export class LoginPage {
     if (!this.loginForm.valid){
       console.log(this.loginForm.value);
     } else {
-      this.Enter(this.authProvider.loginUser(this.loginForm.value.email, this.loginForm.value.password))
+      this.Enter(this.authProvider.loginUser(this.loginForm.value.email, this.loginForm.value.password),"email")
     }
   }
 

@@ -1,3 +1,4 @@
+import { UserPreferenceProvider } from './../../providers/user-preference/user-preference';
 
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { TvPage } from './tv';
@@ -15,6 +16,7 @@ import { IonicPageModule } from 'ionic-angular';
   ],
   exports: [
     TvPage
-  ]
+  ],
+  providers: [ UserPreferenceProvider]
 })
 export class TvModule {}

@@ -57,10 +57,10 @@ export class MovieDetailsPage {
       this.getRatings();
       console.log("movie updated");
       console.log(this.movie);
-      if (result.videos.results.length > 0) {
+      if (result.videos["results"].length > 0) {
         this.trailer =
           "https://www.youtube.com/embed/" +
-          result.videos.results["0"].key +
+          result.videos["results"]["0"].key +
           "?rel=0";
       }
     });

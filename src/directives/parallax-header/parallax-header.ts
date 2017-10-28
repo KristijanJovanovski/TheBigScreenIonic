@@ -20,7 +20,7 @@ export class ParallaxHeader {
   constructor(public element: ElementRef, public renderer: Renderer) {}
 
   ngOnInit() {
-    this.navbarRef = this.element.nativeElement.parentElement.getElementsByClassName("header-md")["0"];
+    this.navbarRef = this.element.nativeElement.parentElement.getElementsByClassName("header-md")["0"] ? this.element.nativeElement.parentElement.getElementsByClassName("header-md")["0"] : this.element.nativeElement.parentElement.getElementsByClassName("header-ios")["0"];
 
     this.navbarBackground = this.element.nativeElement.parentElement.children[
       "0"

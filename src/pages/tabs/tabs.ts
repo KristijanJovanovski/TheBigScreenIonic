@@ -1,3 +1,4 @@
+import { AuthProvider } from './../../providers/auth/auth';
 import { ViewChild, Renderer } from '@angular/core';
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular'
@@ -20,18 +21,23 @@ export class TabsPage {
   tab3Root = 'CalendarPage';
   tab4Root = 'ProfilePage';
 
-  constructor(private renderer: Renderer) {
+  constructor(private auth: AuthProvider ,private renderer: Renderer) {
 
   }
   ionViewDidEnter(){
    this.renderer.setElementClass(
-    this.tabRef["_tabbar"].nativeElement,
-    "show-tabbar",
-    true
-  );
-   
-   
-   
-   
+      this.tabRef["_tabbar"].nativeElement,
+      "show-tabbar",
+      true
+    );
   }
+  
+  // ionViewCanEnter(){
+  //   console.log("ionViewCanEnter tabs");
+  //   console.log("User uid: ");
+  //   console.log(this.auth.getUser().uid);
+    
+    
+  //   return this.auth.getUser().uid;
+  // }
 }

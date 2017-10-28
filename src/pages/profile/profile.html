@@ -1,18 +1,31 @@
-<!--
-  Generated template for the ProfilePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Profile</ion-title>
-  </ion-navbar>
-
+<ion-header >
+  <ion-toolbar >
+    <ion-buttons end>
+        <button (click)="popoverPresent($event)" ion-button>     
+          <i class='fa fa-ellipsis-v'></i>          
+        </button>
+      </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
+<ion-content no-padding>
+  <ion-list >
+    <ion-item>
+      <ion-avatar item-left>
+        <!-- <img [src]="userProfile?.photoURL" alt="User Profile Picture" /> -->
+        
+            <img [src]="avatar" >
+       
+      </ion-avatar>
+      <h2>{{ user?.firstName }} {{ user?.lastName }}</h2>
+      <button ion-button large color="danger" clear item-right (tap)="logOut()">
+        <i clas='fa fa-sign-out'></i>
+      </button>
+    </ion-item>
 
-<ion-content padding>
-  Profile
+    <button item-left ion-item *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]" >
+        <h5>{{item}}</h5>
+      </button>
+  </ion-list>
+
 </ion-content>
